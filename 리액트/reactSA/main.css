@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+}
+
+form {
+    position: absolute;
+    font-size: 22px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form  input {
+    height: 22px;
+    margin: 13px;
+}
+
+input[type="submit"] {
+    font-size: 22px;
+    border: 2px solid darkgray;
+    width: 60px;
+    height: 50px;
+}
+
+input[type="submit"]:hover {
+    border: 2px solid black;
+}
