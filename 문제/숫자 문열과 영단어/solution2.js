@@ -1,23 +1,25 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/81301
 
 function solution(s) {
-    const numStr = ['zero','one', 'two','three','four','five','six','seven','eight', 'nine']
+    const numStr = ['zero','one', 'two','three','four','five','six','seven','ight', 'nine']
     let answer = '';
     for(let i = 0; i < s.length; i++) {
-        // console.log('s시작',s[i] === 'e')
+        console.log(i,'i');
         for(let j = 0; j < numStr.length; j++) {
-            if(s.search(numStr[j]) === 'eight') {
-                console.log(s.search(numStr[j]) === 'eight');
-                console.log('찾았나?',s.search(numStr[j]));
-                answer += String(j);
+            console.log(s.includes(numStr[j]))
+            if(s.includes(numStr[j])) {
+                console.log(s.includes(('eight')));
+                answer += j;
                 s = s.slice(numStr[j].length);
-                console.log('answer',answer);
-                console.log('s',s);
+                console.log('자름',s)
                 break;
             }
+            console.log('현재',j)
         }
+        console.log('안걸림',s.length, s,s[i]);
         answer += String(s[i]);
-        console.log('끝?',i);
+        s = s.slice(1)
+        // console.log('자른후', s)
     }
     return answer;
 }
