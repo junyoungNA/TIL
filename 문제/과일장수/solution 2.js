@@ -8,7 +8,6 @@ function solution(k, m, score) {
   for(let i=0; i<score.length; i+=m) {
       arr.push(score.slice(i, i+m)); 
   }
-  console.log(arr, '뭘까');
   for(let j=0; j<arr.length; j++){
       if(arr[j].length ===m){
         answer+= arr[j][m-1]*m; 
@@ -18,4 +17,4 @@ function solution(k, m, score) {
 }
 
 console.log(solution(3,4,[1, 2, 3, 1, 2, 3, 1])) //8
-// console.log(solution(4,3,[4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2])) //33
+console.log(solution(4,3,[4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2])) //33
