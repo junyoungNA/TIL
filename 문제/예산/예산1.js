@@ -1,17 +1,13 @@
-// https://school.programmers.co.kr/learn/courses/30/lessons/77884
-
+// https://school.programmers.co.kr/learn/courses/30/lessons/12982
 
 function solution(d, budget) {
-
-    for(let i = 0; i < d.length; i++) {
-        for(let j = 0; j < d.length; j++) {
-            
-        }
-    }
-    return answer;
+    return d.sort((a, b) => a - b).reduce((count, price) => {
+        return count + ((budget -= price) >= 0);
+    }, 0);
 }
 
 console.log(solution([1,3,2,5,4], 9));
+console.log(solution([2,2,3,3], 10));
 
 
 // d	budget	result
