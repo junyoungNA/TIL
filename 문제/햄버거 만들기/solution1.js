@@ -11,7 +11,6 @@ function solution(ingredient) {
           answer += 1;
           ingredient.splice(i, 4);
           i = 0;
-          console.log(ingredient, "짤린배열");
           break;
         }
         if (ingredient[i + plus] !== foo) break;
@@ -20,7 +19,7 @@ function solution(ingredient) {
       }
     }
   }
-  return answer;
+  return answer;야
 }
 
 console.log(solution([2, 1, 1, 2, 3, 1, 2, 3, 1])); //2;
