@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .container {
+            width: 500px;
+            display: flex;
+            overflow: hidden;
+        }
+        .container figure {
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+<!--        <figure>-->
+<!--            <img src="./images/batch_carousel_001.jpg" alt="">-->
+<!--        </figure>-->
+    </div>
+
+    <script>
+      (function() {
+        const container = document.querySelector('.container');
+
+        for (let i = 1; i < 8; i++) {
+          const image = document.createElement('img');
+          image.src = `../images/carousel_00${i}.jpg`;
+          image.width = 500;
+          image.height = 300;
+
+          const figure = document.createElement('figure');
+          figure.classList.add(`figure-00${i}`);
+          figure.appendChild(image);
+          container.appendChild(figure);
+        }
+
+        let count = 0;
+        const tf = (count) => count % 7 + 1;
+        window.addEventListener('click', (e) => {
+          console.log('click!!!');
+
+          if (!(count % 7)) {
+            console.log('init');
+            for (let i = 1; i < 8; i++) {
+              const figure = document.querySelector(`.figure-00${i}`);
+              figure.style.transform = `translate(${500 * i}px, 0px)`;
+              console.log('init ', figure);
+            }
+          }
+
+          console.log('tf1', tf(count));
+          const moveX = 500 * (count % 7);
+          const figureA = document.querySelector(`.figure-00${tf(count)}`);
+          figureA.style.transform = `translate(-${moveX}px, 0px)`;
+          // console.log('figureA', figureA);
+
+          count += 1;
+          console.log('tf2', tf(count));
+
+          const figureB = document.querySelector(`.figure-00${tf(count)}`);
+          figureB.style.transform = `translate(-${moveX}px, 0px)`;
+          // console.log('figureB', figureB);
+        });
+      })();
+    </script>
+</body>
+</html>

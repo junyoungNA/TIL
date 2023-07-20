@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <link rel="stylesheet" href="./css/viewContent.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <title>viewContent</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header_user">
+                <ul>
+                    <li>로그인</li>
+                    <li>회원가입</li>
+                    <li>고객센터</li>
+                </ul>
+            </div>
+            
+            <div class="header_logo">
+                <a href="/">SPREAD CULTURE</a>
+            </div>
+            
+            <div class="header_category">
+                <ul>
+                    <li>카테고리</li>
+                    <li><a href="/allcontent.html"> 모든행사</a></li>
+                    <li><a href="/mapListView.html"> 지도로 보기</a></li>
+                    <li><a href="/viewContent.html">하나씩 보기</a></li>
+                    <li>게시판</li>
+                </ul>
+                
+                <div class="search"></div> 
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <div class="container inform"> 
+            <img src="" alt="행사 이미지" class="content_img">
+            <!-- 공연,행사명 title/ 날짜,시간 date / 장소  place / 이용요금use_fee / 출연자 정보 player / 프로그램 소개  program / 기타내용 etc_desc/ 홈페이지 주소 org_link/-->
+            <fieldset>
+                <ul>
+                    <li class="inform_title">
+                        <legend> 제목 : <input type="text" readonly /></legend>
+                    </li>
+                    <li class="inform_date">
+                        <legend>행사 기간 : <input type="text" readonly /></legend>
+                    </li>
+                    <li class="inform_place">
+                        <legend>장소 : <input type="text" readonly></legend>
+                    </li>
+                    <li class="inform_fee">
+                        <legend>이용요금 : <input type="text" readonly> </legend>
+                    </li>
+                    <li class="inform_player">
+                        <legend>출연진 : <input type="text" readonly></legend>
+                    </li>
+                    <li class="inform_program">
+                        <div>프로그램 소개:</div>
+                        <p></p>
+                    </li>
+                    <li class="inform_desc">
+                        <p></p>
+                    </li>
+                    <li class="inform_link">
+                        <a href="">해당 홈페이지 바로가기</a>
+                    </li>
+                </ul>
+                <div class="kakaoMap"></div>
+                <div class="errorMessage">죄송합니다. 해당 위치 정보를 조회할 수 없습니다, 해당 페이지를 참고해주세요.</div>
+                <button class="inform_button"></button>
+                <button class="inform_kakaoMap"></button>
+            </fieldset>
+            
+            <!-- <div class="paging">
+                <ul>
+                    <li class="movePage preBtn"><button data-move="prev"> &lsaquo;</button></li>
+                    <li class="numBtn"> 1 </li>
+                    <li class="movePage nextBtn"><button data-move="next"> &rsaquo;</button></li>
+                </ul>
+            </div> -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <ul class="inner">
+            <li class="maker">
+                <ul>
+                    <li>(주) SPREAD</li>
+                    <li>대표이사:ZOON | 사업자등록번호:123-42-04321</li>
+                    <li>경거도 부천시 오정로 428,1층</li>
+                    <li>개인 정보 관리 책임자:홍길동</li>
+                </ul>
+            </li>
+            <li class="contact">
+                <ul>
+                    <li>CONTACT</li>
+                    <li>
+                        <img src="./images/facbook_logo.jpg" alt="페이스북 로고 이미지">
+                        <img src="./images/Instagram_logo.svg.png" alt="인스타그램 로고 이미지">
+                        <img src="./images/youtube_logo.jpg" alt="유투브 로고 이미지">
+                    </li>
+                    <li class="inquiry">
+                        <ul>
+                            <li class="inquiry__title">전화문의</li>
+                            <li class="inquiry__inform">070-2312-1124</li>
+                        </ul>
+                        <ul>
+                            <li class="inquiry__title">이메일 문의</li>
+                            <li class="inquiry__inform">abc123@naver.com</li>
+                        </ul>
+                    </li>
+                    <li class="working">MON - FRI 09:00 ~ 18:00 &nbsp; 주말,공휴일 휴무 &nbsp; BREAK TIME : 12:30 ~ 13:30</li>
+                </ul>
+            </li>
+            <li class="processing">
+                <ul>
+                    <li class="processing__title">개인정보 처리 방침</li>
+                    <li><a href="javscript:void(0)" target="/">이용약관</a></li>
+                    <li><a href="javscript:void(0)" target="/">고객센터</a></li>
+                    <li><a href="javscript:void(0)" target="/">이벤트</a></li>
+                </ul>
+            </li>
+        </ul>
+</footer>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf51ef41f2fd90c6eb0bce04220a493c&libraries=services"></script>
+    <script>
+        let data = {};
+        const informField = document.querySelector('.container > fieldset > ul');
+        const kakaoMapField = document.querySelector('.container > fieldset > .kakaoMap');
+        const errorMessage = document.querySelector('.container > fieldset > .errorMessage');
+        const infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+        const contentIMG = document.querySelector('.content_img');
+        const title = document.querySelector('.inform_title > legend > input');
+        const date = document.querySelector('.inform_date > legend > input');
+        const place = document.querySelector('.inform_place > legend > input');
+        const fee = document.querySelector('.inform_fee > legend > input');
+        const player = document.querySelector('.inform_player > legend > input');
+        const program = document.querySelector('.inform_program > p');
+        const desc = document.querySelector('.inform_desc > p');
+        const link = document.querySelector('.inform_link > a');
+        const informBtn = document.querySelector('.inform_button');
+        const kakaoBtn = document.querySelector('.inform_kakaoMap');
+
+        //현제 데이터 100개만 가져오게 제한
+        //데이터에 제한만큼에 페이징처리가 넘어갔을시에 처리를 해줘야함;
+        fetch('http://openapi.seoul.go.kr:8088/6e6a4946797a6f6f35304c454b5974/json/culturalEventInfo/1/200/')
+            .then(res => {
+                if(res.status !== 200) {
+                    console.log('서버와 통신이 실패했습니다.');
+                }else {
+                    // console.log('res', res);
+                    return res.json();
+                }
+            })
+            .then(jsonData => {
+                data = jsonData.culturalEventInfo.row;
+                const currentContent = 
+                console.log(data);
+                //해당 데이터의 키값의 해당 데이터가 비어 있으면 빈값 처리 해야함;
+                const id = getId();
+                renderInform(id, data);
+                renderSearchMap(getPlace(data, id));
+            });
+
+        function renderInform(currentPage, data) {
+            console.log(currentPage);
+            contentIMG.src = data[currentPage].MAIN_IMG;
+            title.value = data[currentPage].TITLE === "" ? "해당 정보없음" : data[currentPage].TITLE;
+            date.value = data[currentPage].DATE === "" ? "해당 정보없음" : data[currentPage].DATE;
+            place.value = data[currentPage].PLACE === "" ? "해당 정보없음" : data[currentPage].PLACE;
+            fee.value = data[currentPage].USE_FEE === "" ? "해당 정보없음" : data[currentPage].USE_FEE;
+            player.value = data[currentPage].PLAYER === "" ? "해당 정보없음" : data[currentPage].PLAYER;
+            program.textContent  = data[currentPage].PROGRAM === "" ? "" : data[currentPage].PROGRAM;
+            desc.textContent = data[currentPage].ETC_DESC === "" ? "" : data[currentPage].ETC_DESC;
+            link.href = data[currentPage].ORG_LINK;
+        }
+
+        // kakaoMap api 
+        kakaoBtn.addEventListener('click', function(event) {
+            const id = getId();
+            errorMessage.style.display = 'none';
+            informField.style.display = 'none';
+            kakaoMapField.style.display = 'block';
+            renderSearchMap(getPlace(data,id));
+        });
+
+        informBtn.addEventListener('click', function(event) {
+            const id = getId();
+            errorMessage.style.display = 'none';
+            kakaoMapField.style.display = 'none';
+            informField.style.display = 'block';
+            renderInform(id, data);
+        });
+
+        function renderSearchMap(place) {
+            // 장소 검색 객체를 생성합니다
+            const ps = new kakao.maps.services.Places();
+            // 키워드로 장소를 검색합니다
+            ps.keywordSearch(place, placesSearchCB.bind(null, place));
+        }
+
+        function placesSearchCB (place, data, status, pagination) {
+            //지도 옵션 설정
+            const options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3,
+                draggable : false,
+                scrollwheel : false,
+                disableDoubleClick : false
+            };
+
+            //지도 생성
+            let map = new kakao.maps.Map(kakaoMapField, options);
+
+            if (status === kakao.maps.services.Status.OK) {
+                console.log('data', data);
+                console.log(place,'place입니다');
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+                // LatLngBounds 객체에 좌표를 추가합니다
+                const bounds = new kakao.maps.LatLngBounds();
+                let isPlaceReady = false;
+                for(let i = 0; i < place.length; i++) {
+                    for(let j = 0; j < data.length; j++) {
+                        if(place[i] === data[j].place_name){
+                            displayMarker(data[i], map);
+                            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                            isPlaceReady = true;
+                            console.log('해당 위치를 찾았습니다!');
+                            break;
+                        }
+                    }
+                    if(isPlaceReady) break;
+                }
+
+                if(!isPlaceReady) {
+                    console.log('해당 위치를 여러개 찾습니다!');
+                    for (let i = 0; i < data.length; i++) {
+                        displayMarker(data[i], map);
+                        bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                    }
+                }
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                map.setBounds(bounds);
+            } else {
+                renderError();
+            }
+        }
+
+        // 지도에 마커를 표시하는 함수입니다
+        function displayMarker(place , map) {
+            // 마커를 생성하고 지도에 표시합니다
+            const marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(place.y, place.x) 
+            });
+
+            // 마커에 클릭이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'click', function() {
+                // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+                infowindow.open(map, marker);
+            });
+        }
+
+        function getPlace(data, index) {
+            console.log('place', data[index].PLACE);  
+            const place = data[index].PLACE
+            const result = [];
+            let divisionIndex = 0;
+            for(let i = 0; i <  place.length; i++) {
+                if(data[index].PLACE[i] === ',') continue;
+                if(data[index].PLACE[i] === ' '){
+                    result.push(place.substring(divisionIndex, i));
+                    divisionIndex = i + 1;
+                }
+            }
+        
+            result.push(place.substring(divisionIndex, place.length));
+            console.log('resut', result);
+            return result;
+        }
+
+        function renderError() {
+            kakaoMapField.style.display = 'none';
+            errorMessage.style.display = 'block';
+        }
+
+        function getId () {
+            const urlParams = new URLSearchParams(location.search);
+            return Number(urlParams.get('id'));
+        }
+    </script>
+    
+</body>
+</html>

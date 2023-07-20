@@ -1,0 +1,194 @@
+/* common */
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* HEADER */
+header {
+    height: 250px;
+    background-color: bisque;
+}
+
+header > .container {
+    position: relative;
+    text-align: center;
+    margin: auto;
+    width: 1200px;
+    height: inherit;
+}
+
+header > .container > .header_user {
+    height: 20px;
+}
+
+header > .container > .header_user > ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header > .container > .header_user > ul > li {
+    padding-right: 15px;
+}
+
+header > .container > .header_user > ul > li:last-child {
+    padding-right: 0;
+}
+
+header > .container > .header_logo {
+    font-size: 32px;
+    font-weight: 800;
+    height: 150px;
+    line-height: 150px;
+}
+
+header > .container > .header_category {
+    height: 80px;
+    line-height: 80px;
+}
+
+header > .container > .header_category > ul {
+    display: flex;
+    justify-content: center;
+}
+
+header > .container > .header_category > ul > li {
+    font-size: 20px;
+    font-weight: 600;
+    padding-right: 60px;
+}
+
+/* MAIN */
+main {
+    position: relative;
+}
+main > .container {
+    width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+main > .container > .content {
+    width: 250px;
+    height: 370px;
+    margin:  15px;
+}
+main > .container > .content > img {
+    width: 250px;
+    height: 200px;
+}
+main > .container > .content > ul {
+    text-align: center;
+    width: 250px;
+    height: 50px;
+}
+main > .container > .content > ul > li {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+main > .paging {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -150px; 
+}
+
+main > .paging > button {
+    background:none;
+    border: 1px solid rgb(138, 134, 134);
+    width: 40px;
+    height: 40px;
+}
+
+main > .paging > .current {
+    background-color: #777;
+}
+
+/* Search input */
+main > .search_input {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: calc(50% - 800px) ;
+    width: 300px;
+    height: 25px;
+}   
+
+/* Footer */
+.footer {
+    background-color: #777;
+}
+.footer .inner{
+    position: relative;
+    width: 1350px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: lighter;
+    
+}
+.footer .inner .maker {
+    font-weight: lighter;
+    line-height: 30px;
+}
+.footer .inner .contact {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.footer .inner .contact img {
+    width: 50px;
+    border-radius: 100px;
+    margin: 20px 10px 30px 0;
+}
+.footer .inner .contact li.inquiry {
+    display: flex;
+    justify-content: center; 
+}
+
+.footer .inner .contact li.inquiry .inquiry__title{
+    color: #777;
+    font-weight: lighter;
+    font-size: 18px;
+}
+.footer .inner .contact li.inquiry .inquiry__inform {
+    font-size: 16px;
+    font-weight: lighter;
+    margin: 10px 15px 20px 15px;
+}
+.footer .inner .contact .working {
+    color: #777;
+    font-weight: lighter;
+    font-size: 14px;
+}
+.footer .inner .processing {
+    text-align: end;
+    line-height: 35px;
+}
+.footer .inner .processing  .processing__title {
+    font-weight: 500;
+}
+
+
+/*# sourceMappingURL=/allcontent.b3384153.css.map */

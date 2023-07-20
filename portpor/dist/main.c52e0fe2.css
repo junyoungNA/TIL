@@ -1,0 +1,246 @@
+/* common */
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    margin: auto;
+}
+
+
+/* HEADER */
+header {
+    height: 250px;
+    background-color: bisque;
+}
+
+header > .container {
+    position: relative;
+    text-align: center;
+    margin: auto;
+    width: 1200px;
+    height: inherit;
+}
+
+header > .container > .header_user {
+    height: 20px;
+}
+
+header > .container > .header_user > ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header > .container > .header_user > ul > li {
+    padding-right: 15px;
+}
+
+header > .container > .header_user > ul > li:last-child {
+    padding-right: 0;
+}
+
+header > .container > .header_logo {
+    font-size: 32px;
+    font-weight: 800;
+    height: 150px;
+    line-height: 150px;
+}
+
+header > .container > .header_category {
+    height: 80px;
+    line-height: 80px;
+}
+
+header > .container > .header_category > ul {
+    display: flex;
+    justify-content: center;
+}
+
+header > .container > .header_category > ul > li {
+    font-size: 20px;
+    font-weight: 600;
+    padding-right: 60px;
+}
+
+/* MAIN */
+main {
+}
+
+/* IMG SLIDE */
+main > .container {
+    overflow: hidden;
+}
+
+main > .container > .img_container {
+    width: 1200px;
+    height: 500px;
+    display: flex;
+    /*justify-content: center;*/
+    /*transition: transform 1s;*/
+    transform: translateX(-3000px);
+}
+
+main > .container > .img_container > .inner > img {
+    width: 800px;
+    height: 500px;
+}
+
+main > .container > .imgPrev {
+    line-height: 0;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 200px;
+    font-size: 100px;
+    font-weight: 900;
+    padding: 10px;
+    background:none;
+    border: none;
+}
+
+main > .container > .imgNext {
+    line-height: 0;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 200px;
+    right: 5px;
+    font-size: 100px;
+    font-weight: 900;
+    padding: 10px;
+    background:none;
+    border: none;
+}
+
+main > .container > .imgBtnAll {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+main > .container > .imgBtnAll > button {
+    width: 20px;
+    height: 20px;
+    background: none;
+    border-radius: 50%;
+    border: 4px solid rgb(111, 132, 145) ;
+    font-size: 25px;
+    padding: 10px;
+    margin-right: 15px;
+}
+
+/* TEMA RECOMMEND */
+
+main > .tema {
+    background-color: papayawhip;
+}
+main > .tema > .container.tema {
+    text-align: center;
+    height: 700px;
+}
+
+main > .tema > .container > .tema_title {
+    font-size: 32px;
+    font-weight: 800;
+    color: rgb(83, 80, 80);
+    margin: 40px;
+}
+
+main > .tema > .container > .tema_text {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(107, 107, 107);
+    margin: 10px;
+}
+
+main > .tema > .container > .team_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    width: 800px;
+}
+
+main > .tema > .container > .team_list > .inner {
+    width: 350px;
+    margin: 20px;
+    height: 200px;
+}
+main > .tema > .container > .team_list > .inner > img {
+    width: 350px;
+    height: 200px;
+}
+/* Footer */
+.footer {
+    background-color: #777;
+}
+.footer .inner{
+    position: relative;
+    width: 1350px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: lighter;
+    
+}
+.footer .inner .maker {
+    font-weight: lighter;
+    line-height: 30px;
+}
+.footer .inner .contact {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.footer .inner .contact img {
+    width: 50px;
+    border-radius: 100px;
+    margin: 20px 10px 30px 0;
+}
+.footer .inner .contact li.inquiry {
+    display: flex;
+    justify-content: center; 
+}
+
+.footer .inner .contact li.inquiry .inquiry__title{
+    color: #777;
+    font-weight: lighter;
+    font-size: 18px;
+}
+.footer .inner .contact li.inquiry .inquiry__inform {
+    font-size: 16px;
+    font-weight: lighter;
+    margin: 10px 15px 20px 15px;
+}
+.footer .inner .contact .working {
+    color: #777;
+    font-weight: lighter;
+    font-size: 14px;
+}
+.footer .inner .processing {
+    text-align: end;
+    line-height: 35px;
+}
+.footer .inner .processing  .processing__title {
+    font-weight: 500;
+}
+
+
+/*# sourceMappingURL=/main.c52e0fe2.css.map */

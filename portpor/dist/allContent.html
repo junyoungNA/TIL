@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/allcontent.b3384153.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <title>allcontent</title>
+<script src="/mapListView.js"></script></head>
+<body>
+<header>
+    <div class="container">
+        <div class="header_user">
+            <ul>
+                <li>로그인</li>
+                <li>회원가입</li>
+                <li>고객센터</li>
+            </ul>
+        </div>
+
+        <div class="header_logo">
+            <a href="/">SPREAD CULTURE</a>
+        </div>
+
+        <div class="header_category">
+            <ul>
+                <li>카테고리</li>
+                <li><a href="/allcontent.html"> 모든행사</a></li>
+                <li><a href="/mapListView.html"> 지도로 보기</a></li>
+                <li><a href="/viewContent.html">하나씩 보기</a></li>
+                <li>게시판</li>
+            </ul>
+
+            <div class="search"></div>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <div class="container"></div>
+    <div class="paging"></div>
+
+    <div class="search_input">
+        <select name="category" id="category">
+            <option value="place">장소</option>
+            <option value="title">제목</option>
+            <option value="date">날짜</option>
+        </select>
+        <input id="search" type="text">
+        <button class="searchBtn">검색</button>
+    </div>
+</main>
+
+
+<footer class="footer">
+    <ul class="inner">
+        <li class="maker">
+            <ul>
+                <li>(주) SPREAD</li>
+                <li>대표이사:ZOON | 사업자등록번호:123-42-04321</li>
+                <li>경거도 부천시 오정로 428,1층</li>
+                <li>개인 정보 관리 책임자:홍길동</li>
+            </ul>
+        </li>
+        <li class="contact">
+            <ul>
+                <li>CONTACT</li>
+                <li>
+                    <img src="/facbook_logo.1603e585.jpg" alt="페이스북 로고 이미지">
+                    <img src="/Instagram_logo.svg.b4337599.png" alt="인스타그램 로고 이미지">
+                    <img src="/youtube_logo.6b0200a6.jpg" alt="유투브 로고 이미지">
+                </li>
+                <li class="inquiry">
+                    <ul>
+                        <li class="inquiry__title">전화문의</li>
+                        <li class="inquiry__inform">070-2312-1124</li>
+                    </ul>
+                    <ul>
+                        <li class="inquiry__title">이메일 문의</li>
+                        <li class="inquiry__inform">abc123@naver.com</li>
+                    </ul>
+                </li>
+                <li class="working">MON - FRI 09:00 ~ 18:00 &nbsp; 주말,공휴일 휴무 &nbsp; BREAK TIME : 12:30 ~ 13:30</li>
+            </ul>
+        </li>
+        <li class="processing">
+            <ul>
+                <li class="processing__title">개인정보 처리 방침</li>
+                <li><a href="javscript:void(0)" target="/">이용약관</a></li>
+                <li><a href="javscript:void(0)" target="/">고객센터</a></li>
+                <li><a href="javscript:void(0)" target="/">이벤트</a></li>
+            </ul>
+        </li>
+    </ul>
+</footer>
+
+<script>function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var data = {};
+var searchInput = document.querySelector('main > .search_input > #search');
+var searchSelect = document.querySelector('main > .search_input > #category');
+var searchBtn = document.querySelector('main > .search_input > .searchBtn');
+var mainContainer = document.querySelector('main > .container');
+var pagingEle = document.querySelector('main > .paging');
+fetch('http://openapi.seoul.go.kr:8088/6e6a4946797a6f6f35304c454b5974/json/culturalEventInfo/1/200/').then(function (res) {
+  if (res.status !== 200) {
+    console.log('서버와 통신이 실패했습니다.');
+  } else {
+    return res.json();
+  }
+}).then(function (jsonData) {
+  data = jsonData.culturalEventInfo.row;
+  console.log(data);
+  viewContent(1, data);
+});
+
+function paginationInfo(currentPageNo, totalRecordCount) {
+  // https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte:ptl:view:paginationtag
+  // currentPageNo        	현재 페이지 번호                   	yes
+  // recordCountPerPage   	한 페이지당 게시되는 게시물 건 수     	yes
+  // pageSize             	페이지 리스트에 게시되는 페이지 건수    	yes
+  // totalRecordCount     	전체 게시물 건 수                  	yes
+  // totalPageCount       	페이지 개수                      	no	totalPageCount = ((totalRecordCount-1)/recordCountPerPage) + 1
+  // firstPageNoOnPageList	페이지 리스트의 첫 페이지 번호       	no	firstPageNoOnPageList = ((currentPageNo-1)/pageSize)*pageSize + 1
+  // lastPageNoOnPageList 	페이지 리스트의 마지막 페이지 번호     	no	lastPageNoOnPageList = firstPageNoOnPageList+pageSize-1
+  // if (lastPageNoOnPageList>totalRecordCount) {
+  //     lastPageNoOnPageList=totalPageCount
+  // }
+  // firstRecordIndex     	페이징 SQL의 조건절에 사용되는 시작 rownum    	no	firstRecordIndex = (currentPageNo - 1) * recordCountPerPage
+  // lastRecordIndex      	페이징 SQL의 조건절에 사용되는 마지막 rownum   	no	lastRecordIndex = currentPageNo * recordCountPerPage
+  var recordCountPerPage = 16;
+  var pageSize = 10;
+  var totalPageCount = Math.trunc((totalRecordCount - 1) / recordCountPerPage) + 1;
+  var firstPageNoOnPageList = Math.trunc((currentPageNo - 1) / pageSize) * pageSize + 1;
+  var lastPageNoOnPageList = firstPageNoOnPageList + pageSize - 1;
+
+  if (lastPageNoOnPageList > totalPageCount) {
+    lastPageNoOnPageList = totalPageCount;
+  }
+
+  var firstRecordIndex;
+  var lastRecordIndex;
+  return {
+    currentPageNo: currentPageNo,
+    recordCountPerPage: recordCountPerPage,
+    pageSize: pageSize,
+    totalRecordCount: totalRecordCount,
+    totalPageCount: totalPageCount,
+    firstPageNoOnPageList: firstPageNoOnPageList,
+    lastPageNoOnPageList: lastPageNoOnPageList,
+    firstRecordIndex: firstRecordIndex,
+    lastRecordIndex: lastRecordIndex
+  };
+}
+
+function viewContent(currentPageNo, inFormData, indexArr) {
+  mainContainer.textContent = '';
+  var info = paginationInfo(currentPageNo, inFormData.length);
+  var endtNo = currentPageNo * info.recordCountPerPage;
+  var startNo = endtNo - info.recordCountPerPage;
+
+  for (var i = startNo; i < endtNo; i++) {
+    if (inFormData[i] === undefined) {
+      console.log('데이터 없음');
+      break;
+    }
+
+    var inner = document.createElement('div');
+    inner.classList.add('content'); // 검색기능 때문에 넣은 indexArr 처리하는부분
+    // 이부분이 필요한 이유는 viewContent에 넘겨주긴 위한 id가 필요하기 때문
+
+    inner.dataset.contentId = indexArr === undefined ? i : indexArr[i];
+    var imgEle = document.createElement('img');
+    imgEle.src = inFormData[i].MAIN_IMG;
+    inner.appendChild(imgEle);
+    var ulEle = document.createElement('ul');
+
+    for (var j = 0; j < 3; j++) {
+      var liEle = document.createElement('li');
+
+      switch (j) {
+        case 0:
+          liEle.textContent = inFormData[i].CODENAME;
+          break;
+
+        case 1:
+          liEle.textContent = '제목 : ' + inFormData[i].TITLE;
+          break;
+
+        case 2:
+          liEle.textContent = inFormData[i].GUNAME;
+          break;
+      }
+
+      ulEle.appendChild(liEle);
+    }
+
+    inner.appendChild(ulEle);
+    mainContainer.appendChild(inner);
+  }
+
+  paging(currentPageNo, inFormData);
+  pagingEle.addEventListener('click', function (event) {
+    var pageNo = event.target.dataset.currentPageNo;
+    viewContent(pageNo, inFormData);
+  });
+  viewAddClickEvent();
+}
+
+function paging() {
+  var currentPageNo = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  var inFormData = arguments.length > 1 ? arguments[1] : undefined;
+  var info = paginationInfo(currentPageNo, inFormData.length);
+  pagingEle.textContent = '';
+
+  if (info.firstPageNoOnPageList > info.pageSize) {
+    prevOrNextBtn(false, info);
+  }
+
+  for (var i = info.firstPageNoOnPageList; i < info.lastPageNoOnPageList + 1; i++) {
+    var button = document.createElement('button');
+    button.classList.add('numBtn');
+
+    if (Number(currentPageNo) === i) {
+      button.classList.add('current');
+    }
+
+    button.textContent = String(i);
+    button.dataset.currentPageNo = String(i);
+    pagingEle.appendChild(button);
+  }
+
+  if (info.totalPageCount > info.lastPageNoOnPageList) {
+    prevOrNextBtn(true, info);
+  }
+}
+
+function prevOrNextBtn(isNextBtn, info) {
+  var button = document.createElement('button');
+  button.classList.add('numBtn');
+
+  if (isNextBtn) {
+    button.textContent = ">";
+    button.dataset.currentPageNo = String(info.lastPageNoOnPageList + 1);
+  } else {
+    button.textContent = "<";
+    button.dataset.currentPageNo = String(info.lastPageNoOnPageList - 1);
+  }
+
+  pagingEle.appendChild(button);
+}
+
+searchSelect.addEventListener('change', function () {
+  var select = searchSelect.options[searchSelect.selectedIndex].value;
+
+  switch (select) {
+    case 'date':
+      searchInput.setAttribute('type', 'date');
+      break;
+
+    case 'place':
+    case 'title':
+      searchInput.setAttribute('type', 'text');
+      break;
+  }
+}); // 검색을 하는 방법에 따라 for문을 도는것은 똑같으므로 searchDateFor라는 함수를 만듬
+
+function searchDataFor(data, option, inputValue) {
+  var resultData = [];
+  var indexArr = [];
+
+  for (var i = 0; i < data.length; i++) {
+    if (searchDataHandler[option](data[i], inputValue)) {
+      resultData.push(data[i]);
+      indexArr.push(i);
+    }
+  }
+
+  return [resultData, indexArr];
+} // searchDataFor함수안에서 실행시킬 검색 방법에 따른 if문을 넣을 함수
+
+
+var searchDataHandler = {
+  place: function place(data, inputValue) {
+    if (data.GUNAME.includes(inputValue) || data.PLACE.includes(inputValue)) {
+      return true;
+    }
+  },
+  title: function title(data, inputValue) {
+    if (data.TITLE.includes(inputValue)) {
+      return true;
+    }
+  },
+  date: function date(data, inputValue) {
+    var dateArr = data.DATE.split('~');
+
+    for (var i = 0; i < dateArr.length; i++) {
+      if (inputValue === dateArr[i]) {
+        return true;
+      }
+    }
+  }
+}; // searchInputHandler에서 코드에 중복이 발생하므로 다시 일반화
+// const searchInputHandler = {
+//     place: function (data, inputValue) {
+//         return searchDataFor(data, 'place', inputValue);
+//     },
+//     title: function (data, inputValue) {
+//         return searchDataFor(data, 'title', inputValue);
+//     },
+//     date: function (data, inputValue) {
+//         return searchDataFor(data, 'date', inputValue);
+//     }
+// }
+// 일반화 
+
+function searchInputHandler(data, select, inputValue) {
+  return searchDataFor(data, select, inputValue);
+}
+
+searchInput.addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    var inputValue = searchInput.value;
+    var select = searchSelect.options[searchSelect.selectedIndex].value; // const [resultData, indexArr] = searchInputHandler[select](data, inputValue);
+
+    var _searchInputHandler = searchInputHandler(data, select, inputValue),
+        _searchInputHandler2 = _slicedToArray(_searchInputHandler, 2),
+        resultData = _searchInputHandler2[0],
+        indexArr = _searchInputHandler2[1];
+
+    if (resultData.length === 0) {
+      alert('검색 결과 없음');
+      return;
+    }
+
+    viewContent(1, resultData, indexArr);
+  }
+});
+searchBtn.addEventListener('click', function (event) {
+  var inputValue = searchInput.value;
+  var select = searchSelect.options[searchSelect.selectedIndex].value; // const [resultData, indexArr] = searchInputHandler[select](data, inputValue);
+
+  var _searchInputHandler3 = searchInputHandler(data, select, inputValue),
+      _searchInputHandler4 = _slicedToArray(_searchInputHandler3, 2),
+      resultData = _searchInputHandler4[0],
+      indexArr = _searchInputHandler4[1];
+
+  if (resultData.length === 0) {
+    alert('검색 결과 없음');
+    return;
+  }
+
+  viewContent(1, resultData, indexArr);
+});
+
+function viewAddClickEvent() {
+  var containers = document.querySelectorAll('main > .container > .content');
+
+  for (var i = 0; i < containers.length; i++) {
+    containers[i].addEventListener('click', function (event) {
+      var targetNum = Number(event.currentTarget.dataset.contentId);
+      console.log('targetNum', targetNum);
+      location.href = 'viewContent.html?id=' + targetNum;
+    });
+  }
+}</script>
+
+
+</body>
+</html>
+</html>

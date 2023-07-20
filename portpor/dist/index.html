@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.c52e0fe2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <title>Document</title>
+<script src="/main.c52e0fe2.js"></script></head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header_user">
+                <ul>
+                    <li>로그인</li>
+                    <li>회원가입</li>
+                    <li>고객센터</li>
+                </ul>
+            </div>
+
+            <div class="header_logo">
+                <a href="/">SPREAD CULTURE</a>
+            </div>
+
+            <div class="header_category">
+                <ul>
+                    <li>카테고리</li>
+                    <li><a href="/allContent.html"> 모든행사</a></li>
+                    <li><a href="/mapListView.html"> 지도로 보기</a></li>
+                    <li><a href="/viewContent.html">하나씩 보기</a></li>
+                    <li>게시판</li>
+                </ul>
+
+                <div class="search"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <!-- 첫번째 이미지가 css오더 2 속성을 주어서 가운데로 오게끔 -->
+        <div class="container">
+            <div class="img_container">
+                <div class="inner" data-order="1">
+                    <img src="/slide_img1.fe8f581e.jpg" alt="">
+                </div>
+
+                <div class="inner" data-order="2">
+                    <img src="/slide_img2.99105000.jpg" alt="">
+                </div>
+
+                <div class="inner" data-order="3">
+                    <img src="/slide_img3.13b5584a.jpg" alt="">
+                </div>
+            </div>
+
+            <button class="imgPrev">&lsaquo;</button>
+            <button class="imgNext">&rsaquo;</button>
+
+            <div class="imgBtnAll">
+                <button class="imgBtn" data-position="-3000"></button>
+                <button class="imgBtn" data-position="-3800"></button>
+                <button class="imgBtn" data-position="-2200"></button>
+            </div>
+        </div>
+
+        <section class="tema">
+            <div class="container tema">
+                <p class="tema_title">테마별 추천</p>
+                <p class="tema_text">테마별 행사를 찾아보세요</p>
+                <ul class="team_list">
+                    <li class="inner"><img src="/tema_img1.99fbcbe3.jpg" alt=""></li>
+                    <li class="inner"><img src="/tema_img2.f6065b9f.jpg" alt=""></li>
+                    <li class="inner"><img src="/tema_img3.02dd0ae6.jpg" alt=""></li>
+                    <li class="inner"><img src="/tema_img4.583076c4.jpg" alt=""></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <ul class="inner">
+            <li class="maker">
+                <ul>
+                    <li>(주) SPREAD</li>
+                    <li>대표이사:ZOON | 사업자등록번호:123-42-04321</li>
+                    <li>경거도 부천시 오정로 428,1층</li>
+                    <li>개인 정보 관리 책임자:홍길동</li>
+                </ul>
+            </li>
+            <li class="contact">
+                <ul>
+                    <li>CONTACT</li>
+                    <li>
+                        <img src="/facbook_logo.1603e585.jpg" alt="페이스북 로고 이미지">
+                        <img src="/Instagram_logo.svg.b4337599.png" alt="인스타그램 로고 이미지">
+                        <img src="/youtube_logo.6b0200a6.jpg" alt="유투브 로고 이미지">
+                    </li>
+                    <li class="inquiry">
+                        <ul>
+                            <li class="inquiry__title">전화문의</li>
+                            <li class="inquiry__inform">070-2312-1124</li>
+                        </ul>
+                        <ul>
+                            <li class="inquiry__title">이메일 문의</li>
+                            <li class="inquiry__inform">abc123@naver.com</li>
+                        </ul>
+                    </li>
+                    <li class="working">MON - FRI 09:00 ~ 18:00 &nbsp; 주말,공휴일 휴무 &nbsp; BREAK TIME : 12:30 ~ 13:30</li>
+                </ul>
+            </li>
+            <li class="processing">
+                <ul>
+                    <li class="processing__title">개인정보 처리 방침</li>
+                    <li><a href="javscript:void(0)" target="/">이용약관</a></li>
+                    <li><a href="javscript:void(0)" target="/">고객센터</a></li>
+                    <li><a href="javscript:void(0)" target="/">이벤트</a></li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+
+    <script>var imgBtn = document.querySelectorAll('.imgBtnAll > .imgBtn');
+var imgEle = document.querySelector('.img_container');
+var imgPrevBtn = document.querySelector('.imgPrev');
+var imgNextBtn = document.querySelector('.imgNext');
+var imgInner = document.querySelectorAll('.img_container > .inner'); // css position -3000으로 설정됨
+
+var IMG_WIDTH = 800;
+var IMG_LIMIT = 3;
+var SLIDE_RESET_NUM = -3000;
+var RIGHT_SLIDE_LIMIT = -4600;
+var LEFT_SLIDE_LIMIT = -1400;
+var position = -(IMG_WIDTH + 2200);
+imgEle.style.transition = '1s';
+imgPrevBtn.addEventListener('click', function () {
+  imgEle.style.transition = '1s';
+  position += IMG_WIDTH;
+  imgEle.style.transform = "translateX(".concat(position, "px)");
+  console.log('position', position);
+
+  if (position > LEFT_SLIDE_LIMIT) {
+    setTimeout(function () {
+      imgEle.style.transition = 'none';
+      position = SLIDE_RESET_NUM;
+      imgEle.style.transform = "translateX(".concat(position, "px)");
+    }, 1000);
+  }
+});
+imgNextBtn.addEventListener('click', function () {
+  imgEle.style.transition = '1s';
+  position -= IMG_WIDTH;
+  imgEle.style.transform = "translateX(".concat(position, "px)");
+  console.log('position', position);
+
+  if (position < RIGHT_SLIDE_LIMIT) {
+    setTimeout(function () {
+      imgEle.style.transition = 'none';
+      position = SLIDE_RESET_NUM;
+      imgEle.style.transform = "translateX(".concat(position, "px)");
+    }, 1000);
+  }
+});
+
+var _loop = function _loop(i) {
+  imgBtn[i].addEventListener('click', function (event) {
+    switch (i) {
+      case 0:
+        if (position === -600 || position === -5400) {
+          return;
+        }
+
+        break;
+
+      case 1:
+        if (position === -3800 || position === LEFT_SLIDE_LIMIT) {
+          return;
+        }
+
+        break;
+
+      case 2:
+        if (position === -4600 || position === -2200) {
+          return;
+        }
+
+        break;
+    }
+
+    position = Number(event.target.dataset.position);
+    imgEle.style.transform = "translateX(".concat(position, "px)");
+  });
+};
+
+for (var i = 0; i < imgBtn.length; i++) {
+  _loop(i);
+}
+
+appendCarousel(imgEle);
+
+function getFirstNode(carousel) {
+  return carousel.firstElementChild;
+}
+
+function getLastNode(carousel) {
+  return carousel.lastElementChild;
+}
+
+function appendCarousel(carousel) {
+  var children = carousel.children;
+
+  for (var _i = 0; _i < IMG_LIMIT - 1; _i++) {
+    carousel.append(children[_i].cloneNode(true));
+  }
+
+  for (var _i2 = 0; _i2 < IMG_LIMIT + 1; _i2++) {
+    var firstNode = getFirstNode(carousel);
+    carousel.insertBefore(children[2].cloneNode(true), firstNode);
+  }
+}</script>
+</body>
+
+</html>

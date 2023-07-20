@@ -1,0 +1,238 @@
+/* common */
+button {
+    background:none;
+    border: none;
+    padding: 0;
+}
+
+button:hover {
+    cursor: pointer;
+    color: hotpink;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+.container {
+    position: relative;
+    width: 1200px;
+    margin: auto;
+}
+
+input {
+    font-size: 18px;
+    font-weight: 100;
+    border: none;
+}
+
+
+/* HEADER */
+header {
+    height: 250px;
+    background-color: bisque;
+}
+
+header > .container {
+    position: relative;
+    text-align: center;
+    margin: auto;
+    width: 1200px;
+    height: inherit;
+}
+
+header > .container > .header_user {
+    height: 20px;
+}
+
+header > .container > .header_user > ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header > .container > .header_user > ul > li {
+    padding-right: 15px;
+}
+
+header > .container > .header_user > ul > li:last-child {
+    padding-right: 0;
+}
+
+header > .container > .header_logo {
+    font-size: 32px;
+    font-weight: 800;
+    height: 150px;
+    line-height: 150px;
+}
+
+header > .container > .header_category {
+    height: 80px;
+    line-height: 80px;
+}
+
+header > .container > .header_category > ul {
+    display: flex;
+    justify-content: center;
+}
+
+header > .container > .header_category > ul > li {
+    font-size: 20px;
+    font-weight: 600;
+    padding-right: 60px;
+}
+
+/* MAIN */
+main > .container.inform {
+    display: flex;
+    height: 700px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+main > .container.inform > img {
+    width: 500px;
+    height: 500px;
+    margin: 40px;
+}
+
+main > .container.inform > fieldset {
+    text-align: center;
+    width: 500px;
+    height: 500px;
+    margin : 40px;
+}
+
+main > .container.inform > fieldset > ul > li{
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+}
+
+main > .container.inform > fieldset > ul > li:last-child{
+    margin-bottom: 0;
+}
+
+/* errorMSG */
+main > .container.inform > fieldset > .errorMessage {
+    display: none;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    width: 490px;
+    height: 100px;
+}
+
+/* kakaoMap button */
+main > .container.inform > fieldset > .kakaoMap {
+    display: none;
+    width: 490px;
+    height: 500px;
+}
+
+main > .container.inform > fieldset > button {
+    width: 24px;
+    height: 24px;
+    border: 4px solid rgb(111, 132, 145);
+    border-radius: 50%;
+    margin: 10px;
+}
+
+main > .container.inform > .paging {
+    width: 200px;
+    height: 100px;
+}
+
+main > .container.inform > .paging > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main > .container.inform > .paging > ul > li {
+    margin: 25px;
+}
+
+main > .container.inform > .paging > ul > .numBtn {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+main > .container.inform > .paging > ul > li > button {
+    line-height: 30px;
+    font-size: 60px;
+    font-weight: 900;
+}
+
+/* Footer */
+.footer {
+    background-color: #777;
+}
+.footer .inner{
+    position: relative;
+    width: 1350px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: lighter;
+    
+}
+.footer .inner .maker {
+    font-weight: lighter;
+    line-height: 30px;
+}
+.footer .inner .contact {
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.footer .inner .contact img {
+    width: 50px;
+    border-radius: 100px;
+    margin: 20px 10px 30px 0;
+}
+.footer .inner .contact li.inquiry {
+    display: flex;
+    justify-content: center; 
+}
+
+.footer .inner .contact li.inquiry .inquiry__title{
+    color: #777;
+    font-weight: lighter;
+    font-size: 18px;
+}
+.footer .inner .contact li.inquiry .inquiry__inform {
+    font-size: 16px;
+    font-weight: lighter;
+    margin: 10px 15px 20px 15px;
+}
+.footer .inner .contact .working {
+    color: #777;
+    font-weight: lighter;
+    font-size: 14px;
+}
+.footer .inner .processing {
+    text-align: end;
+    line-height: 35px;
+}
+.footer .inner .processing  .processing__title {
+    font-weight: 500;
+}
+
+
+/*# sourceMappingURL=/viewContent.e945fff1.css.map */

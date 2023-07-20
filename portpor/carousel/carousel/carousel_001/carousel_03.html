@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel</title>
+
+    <style>
+        .container {
+            width: 500px;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: 1s;
+        }
+
+        img {
+            display: inline-block;
+            width: 500px;
+        }
+
+        button {
+            width: 100px;
+            height: 100px;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="carousel">
+        <img src="../images/carousel_00001.jpg" alt="">
+        <img src="../images/carousel_00002.jpg" alt="">
+        <img src="../images/carousel_00003.jpg" alt="">
+        <img src="../images/carousel_00004.jpg" alt="">
+        <img src="../images/carousel_00005.jpg" alt="">
+    </div>
+</div>
+
+<div>
+    <button class="left">⬅</button>
+    <button class="right">➡</button>
+</div>
+
+<script>
+    function getFirstNode(carousel) {
+        return carousel.firstElementChild;
+    }
+
+    function getLastNode(carousel) {
+        return carousel.lastElementChild;
+    }
+
+    function appendCarousel(carousel) {
+        const firstNode = getFirstNode(carousel);
+        const lastNode = getLastNode(carousel);
+        carousel.append(firstNode.cloneNode(true));
+        carousel.insertBefore(lastNode.cloneNode(true), firstNode);
+    }
+
+    function move(location, limit, carousel, carouselSize) {
+        carousel.style.transition = '1s';
+
+        location += carouselSize;
+        console.log('location', location);
+        carousel.style.transform = `translate(-${location}px, 0px)`;
+        if (location === limit) {
+            setTimeout(function () {
+                carousel.style.transition = 'none';
+                location = carouselSize;
+                console.log('setTimeout location', location);
+                carousel.style.transform = `translate(-${location}px, 0px)`;
+            }, 1000);
+        }
+
+        if (location === limit) {
+            location = carouselSize;
+        }
+        console.log('return', location);
+        return location;
+    }
+
+
+    const left = document.querySelector('.left');
+    const right = document.querySelector('.right');
+    const carousel = document.querySelector('.carousel');
+    appendCarousel(carousel);
+
+    const carouselSize = 500;
+    carousel.style.transform = `translate(-${carouselSize}px, 0px)`;
+
+    const len = carousel.querySelectorAll('img').length;
+    const min = 0;
+    const max = carouselSize * (len - 1);
+
+    let x = carouselSize;
+    left.addEventListener('click', function () {
+        x = move(x, max, carousel, carouselSize);
+    });
+
+    right.addEventListener('click', function () {
+        x = move(x, min, carousel, carouselSize * -1);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .container {
+            width: 100vw;
+            display: flex;
+            /*overflow: hidden;*/
+        }
+
+        .container figure {
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!--        <figure>-->
+    <!--            <img src="./images/batch_carousel_001.jpg" alt="">-->
+    <!--        </figure>-->
+</div>
+
+<script>
+  (function () {
+    const container = document.querySelector('.container');
+    const images = [1, 2, 3, 4, 5, 6, 7, 1, 2].map(x => `../images/carousel_00${x}.jpg`);
+
+    const innerWidth = window.innerWidth;
+    images.map((src, i) => {
+      const image = document.createElement('img');
+      image.src = src;
+      image.width = innerWidth;
+
+      const figure = document.createElement('figure');
+      figure.classList.add(`figure-00${i + 1}`);
+      figure.appendChild(image);
+      container.appendChild(figure);
+    });
+
+    const moveFigure = (id, moveX, duration = 'none') => {
+      const figure = document.querySelector(`.figure-00${id}`);
+      figure.style.transition = duration;
+      figure.style.transform = `translateX(-${moveX}px)`;
+    }
+
+    const figureInit = (count) => {
+      if (!(count % 7)) {
+        for (let i = 0; i < 7; i++) {
+          const figure = document.querySelector(`.figure-00${i + 1}`);
+          figure.style.transform = `translateX(${innerWidth}px)`;
+        }
+      }
+    }
+
+    let count = 1;
+    window.addEventListener('click', () => {
+      console.log(count);
+      // figureInit(count);
+
+      for (let i = 0; i < 9; i++) {
+        moveFigure(i + 1, innerWidth * count, '0.5s');
+      }
+
+      if (0 === (count % 7)) {
+        count = 0;
+        setTimeout(() => {
+          console.log('setTimeout');
+          for (let i = 0; i < 9; i++) {
+            moveFigure(i + 1, 0);
+          }
+        }, 500);
+      }
+
+      count += 1;
+    });
+
+  })();
+</script>
+</body>
+</html>

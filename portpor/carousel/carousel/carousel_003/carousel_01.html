@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../_2_CSS/reset.css">
+    <style>
+        .swiper-container {
+            width: 100vw;
+            display: flex;
+            transition: .5s;
+        }
+
+        .carousel img {
+            width: 100vw;
+            /*object-fit: cover;*/
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="swiper-container">
+        <figure class="carousel carousel-01">
+            <img src="https://via.placeholder.com/1280x500/261/fff?text=2" alt="">
+        </figure>
+        <figure class="carousel carousel-02">
+            <img src="https://via.placeholder.com/1280x500/416/fff?text=3" alt="">
+        </figure>
+        <figure class="carousel carousel-03">
+            <img src="https://via.placeholder.com/1280x500/248/fff?text=4" alt="">
+        </figure>
+        <figure class="carousel carousel-04">
+            <img src="https://via.placeholder.com/1280x500/462/fff?text=5" alt="">
+        </figure>
+        <figure class="carousel carousel-05">
+            <img src="https://via.placeholder.com/1280x500/68c/fff?text=6" alt="">
+        </figure>
+        <figure class="carousel carousel-06">
+            <img src="https://via.placeholder.com/1280x500/1bd/fff/?text=7" alt="">
+        </figure>
+        <figure class="carousel carousel-07">
+            <img src="https://via.placeholder.com/1280x500/09f/fff?text=1" alt="">
+        </figure>
+
+        <!--<figure class="carousel carousel-01">
+            <img src="./images/batch_carousel_002.jpg" alt="">
+        </figure>
+        <figure class="carousel carousel-02">
+            <img src="./images/batch_carousel_003.jpg" alt="">
+        </figure>
+        <figure class="carousel carousel-03">
+            <img src="./images/batch_carousel_004.jpg" alt="">
+        </figure>
+        <figure class="carousel carousel-04">
+            <img src="./images/batch_carousel_005.jpg" alt="">
+        </figure>
+        <figure class="carousel carousel-05">
+            <img src="./images/batch_carousel_006.jpg" alt="">
+        </figure>
+        <figure class="carousel carousel-06">
+            <img src="./images/batch_carousel_007.jpg7" alt="">
+        </figure>
+        <figure class="carousel carousel-07">
+            <img src="./images/batch_carousel_001.jpg" alt="">
+        </figure>-->
+    </div>
+
+    <script>
+      (function() {
+        const container = document.querySelector('.swiper-container');
+        const carousel01 = document.querySelector(`.carousel-01`);
+        const carousel07 = document.querySelector(`.carousel-07`);
+
+        container.append(carousel01.cloneNode(true));
+        container.insertBefore(carousel07.cloneNode(true), container.firstElementChild);
+
+        let count = 1;
+        const moveContainer = (w) => {
+          console.log('move');
+          container.style.transition = '0.5s';
+          container.style.transform = `translateX(-${w * count}px)`;
+
+          if (0 === (count % 7)) {
+            count = 0;
+            setTimeout(() => {
+              container.style.transition = 'none';
+              container.style.transform = `translateX(0px)`;
+            }, 500);
+          }
+
+          count += 1;
+        };
+
+        let width = window.innerWidth;
+        window.addEventListener('resize', () => {
+          width = window.innerWidth;
+          console.log(width);
+        });
+
+        window.addEventListener('click', () => {
+          moveContainer(width);
+        });
+      })();
+    </script>
+</body>
+</html>
