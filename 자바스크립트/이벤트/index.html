@@ -8,7 +8,10 @@
 <body>
     <!-- <button onClick = "clickHandler('클릭')">버튼입니다!</button>  -->
     <!-- 이벤트 핸들러 어트리뷰트 방식 -->
-    <button>버튼입니다!</button> 
+    <div>
+        <button>버튼입니다!</button> 
+    </div>
+  
     <!-- 이벤트 핸들러 프로퍼티 방식 -->
     <script>
             const Btn = document.querySelector('button');
@@ -16,12 +19,13 @@
             //이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩
             //하나의 이벤트 핸들러만 바인딩 가능
             //두번째 바인딩 함수에 의해 첫번째 바인딩 함수가 실행되지 않음(재할당)
-            Btn.onclick = function () {
-                alert('버튼 클릭이요1');
-            }
+            // Btn.onclick = function () {
+            //     alert('버튼 클릭이요1');
+            // }
 
-            Btn.oncelick = function () {
-                alert('버튼 클릭이요2');
+            Btn.onclick =  () => {
+                // alert('버튼 클릭이요2');
+                console.log(this,'this');
             }
 
 
