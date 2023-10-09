@@ -4,11 +4,14 @@ function solution(a, b, n) {
         
     while(n >= a)  {
         const receive= Math.floor(n / a) * b;
+        console.log(receive,'받은');
         answer += receive;
-        n = n - (receive * a) + receive;
+        console.log(answer,'받은 총');
+        n = receive + n % a;
+        console.log(n, '남은');
     }
     return answer;
 }
 
 console.log(solution(2, 1, 20)) //19
-console.log(solution(3, 1, 20)) //9
+// console.log(solution(3, 1, 20)) //9
