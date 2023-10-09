@@ -1,25 +1,22 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/159994
 
 function solution(cards1, cards2, goal) {  
-    for(let i = 0; i < cards1.length; i++) {
-        
-        const findIDX = goal.findIndex((item) =>  item === cards1[i]);
-        if(findIDX !== -1) {
-            goal.splice(findIDX, 1);
-        };
-        if(goal.length === 0) return 'Yes';
+    while(goal.length !== 0) {
+        if(cards1[0] === goal[0]) {
+            goal.splice(0,1);
+            cards1.splice(0,1);
+            continue;
+        } 
+        if(cards2[0] === goal[0]){
+            goal.splice(0,1);
+            cards2.splice(0,1);
+            continue;
+        }
+        break;
     }
-    for(let i = 0; i < cards2.length; i++) {
-        const findIDX = goal.findIndex((item) =>  item === cards2[i]);
-        if(findIDX !== -1) {
-            goal.splice(findIDX, 1);
-        };
-        if(goal.length === 0) return 'Yes';
-    }
-    return 'No';
+    return goal.length === 0 ? 'Yes' : 'No';
 }
 
 // console.log(solution(["i", "drink", "water"],["want", "to"],["i", "want", "to", "drink", "water"]));//"Yes"
 console.log(solution(["i", "water", "drink"],["want", "to"],["i", "want", "to", "drink", "water"]));//""No""
-// console.log(,); //"No"
 // cards1	cards2	goal	result
