@@ -8,9 +8,7 @@ function solution(N, stages) {
     }
 
     stages.forEach((y)=> {
-        //!== undefined 로 바꾸니 해결?
-        //이유가 멀까?
-        if(obj[y] !== undefined)
+        if(obj[y] <= N)
             obj[y]++;
     });
 
