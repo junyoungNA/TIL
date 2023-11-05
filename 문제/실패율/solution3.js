@@ -38,3 +38,17 @@ function solution(N, stages) {
 console.log(solution(5,[2, 1, 2, 6, 2, 4, 3, 3]));//[3,4,2,1,5]
 console.log(solution(4,[4,4,4,4,4]));//	[4,1,2,3]
 console.log(solution(10,[10,2]));//	[10,2,1,3,4,5,6,7,8,9]
+
+// 참조 카운트가 1인 상태
+let foo = {}
+let bar = {}
+
+//서로의 객체를 참조 참조 카운트가 2인 상태
+foo.bar = bar;
+bar.foo = foo;
+
+//서로의 객체 참조를 해제시킨다
+//이 때의 참조카운트는 1이 된다.
+//이것이 순환 참조 문제! 카운트가 1이기때문에 메모리에 남게된다.
+foo = null;
+bar = null;
