@@ -13,6 +13,7 @@ function solution(dartResult) {
     let answer = 0;
     const allArr = [];
     for(let i = 0; i < dartResult.length; i++) {
+        // 숫자인지 확인하기
         if(isNaN(dartResult[i]) === true) {
             switch(dartResult[i]) {
                 case 'S' : allArr[allArr.length - 1] = allArr[allArr.length - 1] ** 1;
@@ -21,17 +22,23 @@ function solution(dartResult) {
                     break; 
                 case 'T' : allArr[allArr.length - 1] = allArr[allArr.length - 1] ** 3;
                     break;
-                case '*' : 
-                    break;
-                case '#' :  
+                case '*' : allArr[allArr.length - 1] =  allArr[allArr.length - 1] * 2;  allArr[allArr.length - 2] =  allArr[allArr.length - 2] * 2;
+                    break; 
+                case '#' :  allArr[allArr.length - 1] =  -(allArr[allArr.length - 1]); 
                     break;
                 default : break;
             }
-            console.log(allArr,'전체', dartResult[i], allArr[allArr.length - 1], `몇번째${i}`);
         } else {
+            //현재 숫자가 아니라면 10인지 확인
+            if(dartResult[i] === '1' && dartResult[i + 1] === '0') {
+                allArr.push(10);
+                i = i + 1 //10이므로 i를 1추가해서 다다음 반복문으로
+                continue;
+            }
             allArr.push(Number(dartResult[i]));
         }
     }
+    allArr.forEach(num => answer += num);
     return answer;
 }
 
@@ -44,4 +51,10 @@ function solution(dartResult) {
 // 6	1T2D3D#	-4	13 + 22 + 32 * (-1)
 // 7	1D2S3T*	59	12 + 21 * 2 + 33 * 2
 
-console.log(solution('1S2D*3T'))//37	11 * 2 + 22 * 2 + 33
+console.log(solution('1S2D*3T'));//37	    11 * 2 + 22 * 2 + 33
+console.log(solution('1D2S#10S')); // 9	    12 + 21 * (-1) + 101
+console.log(solution('1D2S0T')); //3        12 + 21 + 03
+console.log(solution('1S*2T*3S')); // 23	11 * 2 * 2 + 23 * 2 + 31
+console.log(solution('1D#2S*3S')); //5	    12 * (-1) * 2 + 21 * 2 + 31
+console.log(solution('1T2D3D#')); //-4	    13 + 22 + 32 * (-1)
+console.log(solution('1D2S3T*')); //59	    12 + 21 * 2 + 33 * 2
