@@ -9,7 +9,7 @@ function solution(s, skip, index) {
     for (const element of s) {
         const findIndex = skipAlphabet.indexOf(element);
         const plusIndex = findIndex + index;
-        const targetIndex = plusIndex >= skipAlphabet.length ? plusIndex - skipAlphabet.length : plusIndex;
+        const targetIndex = plusIndex >= skipAlphabet.length ? plusIndex % skipAlphabet.length : plusIndex;
         answer +=  skipAlphabet[targetIndex];
         console.log(plusIndex > skipAlphabet.length, skipAlphabet[targetIndex], targetIndex);
     }
@@ -18,3 +18,4 @@ function solution(s, skip, index) {
 
 // s	skip	index	result
 console.log(solution("aukks","wbqd",5)) //happy
+console.log(solution("a","bcdefghijk",20)) //happy
