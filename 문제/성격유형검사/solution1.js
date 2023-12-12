@@ -26,34 +26,35 @@ function solution(survey, choices) {
         
         if(choices[i] > 4) {
             choiceSurvey.push(survey[i][1]);
-            // console.log('choices',4 - choices[i],'큼')
-            choiceSurveyPoint.push(choices[i]);
+            // console.log('choices', choices[i],'큼'  )
+            choiceSurveyPoint.push(choices[i] - 4);
             continue;
         }
         if(choices[i] < 4) {
             choiceSurvey.push(survey[i][0]);
             // console.log('choices',4 - choices[i],'작음')
-            choiceSurveyPoint.push(choices[i]);
+            choiceSurveyPoint.push(4 - choices[i]);
         }
     }
-    console.log(choiceSurveyPoint,'point');
-    console.log(choiceSurvey,'choice');
+    // console.log(choiceSurveyPoint,'point');
+    // console.log(choiceSurvey,'choice');
 
     for(let i = 0; i < choiceSurvey.length; i++) {
         const findIDX = indicators.findIndex((item)=> item.includes(choiceSurvey[i]));
-        console.log(findIDX,'찾음');
         if(findIDX < 0 || findIDX > indicators.length -1) continue;
-        console.log(answer, choiceSurveyPoint[i], indicators[findIDX],'번째');
-        if(answer[findIDX] === 0) {
-            answer[findIDX] += choiceSurveyPoint[i];
+        // console.log(answer, choiceSurveyPoint[i], indicators[findIDX],'번째');
+        if(indicators[findIDX][0] === choiceSurvey[i] ) {
+            // console.log('마이너스',choiceSurveyPoint[i],choiceSurvey[i],indicators[findIDX] );
+            answer[findIDX] -= choiceSurveyPoint[i];
         } else {
-            choiceSurvey[i]
+            // console.log('플러스',choiceSurveyPoint[i],choiceSurvey[i],indicators[findIDX] );
+            answer[findIDX] += choiceSurveyPoint[i];
         }
     }
-
+    // console.log('계산후', answer);
     for(let i = 0; i < answer.length; i++) {
         //3보다 크면 긍정 -마이너스가 아니라면 부정 +가드렁감
-        answer[i] = answer[i] < 0 ? indicators[i][1] : indicators[i][0];
+        answer[i] = answer[i] > 0 ? indicators[i][1] : indicators[i][0];
     }
     return answer.join('');
 }
