@@ -5,6 +5,8 @@ function solution(numbers, hand) {
     let left = '*';
     let right = '#'
     // let middle = 0;
+    const keyPadArr = [[1,2,3], [4,5,6], [7,8,9]];
+
     numbers.map((item) => {
         // console.log(item,'현재 숫자');
         switch(item) {
@@ -13,22 +15,30 @@ function solution(numbers, hand) {
             case 7: 
                 answer += 'L';
                 left = item;
-                console.log('왼쪽',answer, item, left);
+                // console.log('왼쪽',answer, item, left);
                 break;
-            case 2:
+            case 2:                    
             case 5:
             case 8:
-            case 0:
-                const calculLeft = Math.abs(item - left); 
-                const calculRight = Math.abs(item - right);
-                const midValue = calculLeft > calculRight ? 'R' : 'L'; 
-                answer += midValue === 'R' ? 'R' : 'L';
-                console.log('중간값', midValue, '현재값',item, '왼쪽', left, '오른쪽', right)
-                // console.log('중간결과', midValue, '현재item', item, '왼쪽', left, '오른쪽', right);                
-                if(midValue === 'R') right = item;
-                if(midValue === 'L') left = item;
-                // console.log('왼쪽',left, '결과',calculLeft);
-                // console.log('오른쪽', right, '결과', calculRight);
+                console.log('현재', item, 'left',left, 'right',right);
+                let leftValue = -1;
+                let rightValue = -1;
+                let midValue = midValue;
+                for(let i = 0; i < keyPadArr.length; i++) {
+                    if(leftValue === -1) {
+                        leftValue = keyPadArr[i].findIndex((item) => item === left);
+                        if(leftValue !== -1) {
+                            
+                        }
+                    }
+                    if(rightValue === -1) {
+                        rightValue = keyPadArr[i].findIndex((item) => item === right);
+                    }
+                    if(midValue === -1) {
+                        midValue = keyPadArr[i].findIndex((item) => item === midValue);
+                    }
+                    
+                }
                 // 현재 오른손과 왼손의 위치중 가까운 손이 누르게됨
                 // 거리가 같다면 주손으로 뉼러야함
                 break;
@@ -37,7 +47,7 @@ function solution(numbers, hand) {
             case  9: 
                 answer += 'R';
                 right  = item;
-                console.log('오른쪽',answer, item, right);
+                // console.log('오른쪽',answer, item, right);
                 break; 
             default : break;
         }
